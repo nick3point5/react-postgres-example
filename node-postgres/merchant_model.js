@@ -31,25 +31,20 @@ const createMerchant = (body) => {
 					reject(error)
 				}
 
-				resolve(`A new merchant has been added added: ${results.row[0]}`)
+				resolve(`A new merchant has been added added:\n  name: ${results.rows[0].name}\n  enail: ${results.rows[0].email}`)
 			}
 		)
 	})
 }
 
-const deleteMerchant = () => {
+const deleteMerchant = (id) => {
 	return new Promise(function (resolve, reject) {
-		const id = parseInt(request.params.id)
-		pool.query(
-			'DELETE FROM merchants WHERE id = $1', [id],
-			(error, results) => {
-				if (error) {
-					reject(error)
-				}
-
-				resolve(`A new merchant has been added added: ${results.row[0]}`)
-			}
-		)
+    pool.query('DELETE FROM merchants WHERE id = $1', [id], (error, results) => {
+      if (error) {
+        reject(error)
+      }
+      resolve(`Merchant deleted with ID: ${id}`)
+    })
 	})
 }
 
