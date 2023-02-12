@@ -31,7 +31,7 @@ const createMerchant = (body) => {
 					reject(error)
 				}
 
-				resolve(`A new merchant has been added added:\n  name: ${results.rows[0].name}\n  enail: ${results.rows[0].email}`)
+				resolve(`A new merchant has been added added:\n  name: ${results.rows[0].name}\n  email: ${results.rows[0].email}`)
 			}
 		)
 	})
